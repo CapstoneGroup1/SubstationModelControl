@@ -1,30 +1,32 @@
-const int relay1 = 7;
-const int relay2 = 8;
-
-const int An1=3;
-const int An2=4;
-
-long line1=0;
-long line2=0;
+const int LED=7;
+const int Analog=3;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  pinMode(relay1, OUTPUT);
-  pinMode(relay2, OUTPUT);
+  pinMode(LED, OUTPUT);
+ // pinMode(relay2, OUTPUT);
+  //pinMode
 }
-
-
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  line1=analogRead(An1);
-  line2=analogRead(An2);
-  controlLogic(line1,line2);
+  long vol=analogRead(Analog);  //read the analog voltage from divider
+  delay(5);
+  if(high(vol)){  //check if the voltage is too high (means current through load is too high)
+    digitalWrite(LED,HIGH);
+  }
+  else{
+    digitalWrite(LED,LOW);
+  }
+  delay(5); 
 }
 
-bool controlLogic(long x,long y){
- return true;
+bool high(long x){
+ if(x>307){ //306=~1.5V 
+            //use voltage divider with pot to determine correlating current through load
+  return true; 
+ }
+ return false;
 }
 
 
