@@ -20,10 +20,9 @@ void loop() {
   delay(1000); 
 }
 
-
 bool high(long x){
- if(x>206.4){ //206=~1.008V 
-            //use voltage divider with pot to determine correlating current through load
+ if(x>204.8){ //204.8=1V 
+             //use voltage divider with potentiometer to determine correlating current through load
   return true; 
  }
  return false;
