@@ -17,7 +17,6 @@ void loop() {
   else{
     digitalWrite(LED,LOW);
   }
-  delay(1000); 
 }
 
 bool high(long x){
